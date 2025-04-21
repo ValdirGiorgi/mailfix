@@ -49,10 +49,10 @@ class Mailfix {
   final int _maxAllowedDistance;
   final bool allowSpecialChars;
 
-  /// Retorna todos os domínios válidos (padrão + extras)
+  /// Returns all valid domains (default + extras)
   List<String> get domains => _domains.domains;
 
-  /// Retorna o algoritmo de similaridade configurado
+  /// Returns the configured similarity algorithm
   SimilarityAlgorithm get similarityAlgorithm => _similarityAlgorithm;
 
   static SimilarityAlgorithm _getAlgorithmInstance(
@@ -69,10 +69,10 @@ class Mailfix {
     }
   }
 
-  /// Validates an email and returns a result with status and suggestion if any
+  /// Validates an email and returns result with status and suggestion
   EmailValidationResult validateEmail(String email) {
     if (email.isEmpty) {
-      // Returns invalid result if email is empty
+      // Returns invalid if email is empty
       return const EmailValidationResult(isValid: false);
     }
 
@@ -81,7 +81,7 @@ class Mailfix {
     return EmailValidationResult(isValid: isValid, suggestion: suggestion);
   }
 
-  /// Returns corrected email suggestion or null
+  /// Returns a corrected email suggestion or null
   String? _suggestEmailCorrection(String email) {
     final parts = email.split('@');
     if (parts.length != 2) return null;

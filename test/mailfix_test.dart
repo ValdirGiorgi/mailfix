@@ -2,30 +2,30 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mailfix/mailfix.dart';
 
 void main() {
-  group('Mailfix - Parâmetros padrão', () {
+  group('Mailfix - Default parameters', () {
     final mailfix = Mailfix();
 
-    test('Valida email correto', () {
+    test('Valid email', () {
       final result = mailfix.validateEmail('user@gmail.com');
       expect(result.isValid, isTrue);
       expect(result.suggestion, isNull);
     });
 
-    test('Sugere domínio correto para erro comum', () {
+    test('Suggests correct domain for common typo', () {
       final result = mailfix.validateEmail('user@gmil.com');
       expect(result.isValid, isTrue);
       expect(result.suggestion, 'user@gmail.com');
     });
 
-    test('Email inválido sem arroba', () {
+    test('Invalid email without @', () {
       final result = mailfix.validateEmail('usergmail.com');
       expect(result.isValid, isFalse);
       expect(result.suggestion, isNull);
     });
   });
 
-  group('Mailfix - Algoritmos de similaridade', () {
-    test('Damerau-Levenshtein sugere domínio com transposição', () {
+  group('Mailfix - Similarity algorithms', () {
+    test('Damerau-Levenshtein suggests domain with transposition', () {
       final mailfix = Mailfix(
         algorithm: MailfixSimilarityAlgorithm.damerauLevenshtein,
       );
@@ -33,7 +33,7 @@ void main() {
       expect(result.suggestion, 'user@gmail.com');
     });
 
-    test('Jaro-Winkler sugere domínio com erro sutil', () {
+    test('Jaro-Winkler suggests domain with subtle typo', () {
       final mailfix = Mailfix(
         algorithm: MailfixSimilarityAlgorithm.jaroWinkler,
       );
@@ -42,22 +42,22 @@ void main() {
     });
   });
 
-  group('Mailfix - Inclusão de domínios extras', () {
-    test('Sugere domínio extra adicionado', () {
+  group('Mailfix - Extra domains', () {
+    test('Suggests added extra domain', () {
       final mailfix = Mailfix(extraDomains: ['empresa.com']);
       final result = mailfix.validateEmail('user@emrpesa.com');
       expect(result.suggestion, 'user@empresa.com');
     });
 
-    test('Prioridade para último domínio em empate', () {
+    test('Last domain has priority in tie', () {
       final mailfix = Mailfix(extraDomains: ['dominio2.com', 'dominio1.com']);
-      // Ambos têm distância igual para o erro abaixo
+      // Both have same distance for the typo below
       final result = mailfix.validateEmail('user@dominioz.com');
-      // O último da lista (dominio2.com) deve ser sugerido
+      // The last in the list (dominio2.com) should be suggested
       expect(result.suggestion, 'user@dominio2.com');
     });
 
-    test('Adicionar domínio após instância', () {
+    test('Add domain after instance', () {
       final mailfix = Mailfix();
       mailfix.addDomain('novodominio.com');
       final result = mailfix.validateEmail('user@novodomino.com');
@@ -65,18 +65,18 @@ void main() {
     });
   });
 
-  group('Mailfix - Caracteres especiais', () {
+  group('Mailfix - Special characters', () {
     const emailWithSpecial = 'user!teste@gmail.com';
 
-    test('Domínio com caractere especial não é aceito por padrão', () {
+    test('Domain with special char is not accepted by default', () {
       final mailfix = Mailfix();
       final result = mailfix.validateEmail(emailWithSpecial);
       expect(result.isValid, isFalse);
-      // Sugestão pode ser nula ou igual ao domínio especial, dependendo da validação
+      // Suggestion may be null or same as special domain, depending on validation
     });
 
     test(
-      'Domínio com caractere especial é aceito com allowSpecialChars=true',
+      'Domain with special char is accepted with allowSpecialChars=true',
       () {
         final mailfix = Mailfix(allowSpecialChars: true);
         final result = mailfix.validateEmail(emailWithSpecial);
@@ -86,8 +86,8 @@ void main() {
     );
   });
 
-  group('Mailfix - Casos adicionais', () {
-    test('Múltiplos domínios', () {
+  group('Mailfix - Additional cases', () {
+    test('Multiple domains', () {
       final mailfix = Mailfix(
         extraDomains: ['test.com', 'xpto.com.br'],
         allowSpecialChars: true,
@@ -98,20 +98,20 @@ void main() {
       expect(result2.suggestion, 'user@xpto.com.br');
     });
 
-    test('Adicionar domínio duplicado não causa erro', () {
+    test('Adding duplicate domain does not cause error', () {
       final mailfix = Mailfix();
       mailfix.addDomain('gmail.com');
       final result = mailfix.validateEmail('user@gmail.com');
       expect(result.isValid, isTrue);
     });
 
-    test('Email vazio é inválido', () {
+    test('Empty email is invalid', () {
       final mailfix = Mailfix();
       final result = mailfix.validateEmail('');
       expect(result.isValid, isFalse);
     });
 
-    test('Email apenas com espaços é inválido', () {
+    test('Email with only spaces is invalid', () {
       final mailfix = Mailfix();
       final result = mailfix.validateEmail('   ');
       expect(result.isValid, isFalse);

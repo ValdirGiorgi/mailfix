@@ -20,19 +20,6 @@ class EmailValidationResult {
   /// Error message if the email is invalid
   final String? error;
 
-  /// Creates a copy of this result with modified fields
-  EmailValidationResult copyWith({
-    bool? isValid,
-    String? suggestion,
-    String? error,
-  }) {
-    return EmailValidationResult(
-      isValid: isValid ?? this.isValid,
-      suggestion: suggestion ?? this.suggestion,
-      error: error ?? this.error,
-    );
-  }
-
   @override
   String toString() {
     if (isValid) {

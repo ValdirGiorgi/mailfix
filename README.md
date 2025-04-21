@@ -2,18 +2,18 @@
 
 A powerful Dart/Flutter package for email validation and correction suggestions using advanced string similarity algorithms.
 
+---
+
 ## Features
 
-- 📧 RFC 5322 compliant email validation
+- 📧 RFC 5322 compliant email validation (optional)
 - 🔍 Smart domain suggestions for typos
 - 🌐 Multiple similarity algorithms:
-  - Levenshtein distance
-  - Damerau-Levenshtein distance
-  - Jaro-Winkler similarity
-- 🌍 Internationalization support
+  - [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
+  - [Damerau-Levenshtein distance](https://en.wikipedia.org/wiki/Damerau-Levenshtein_distance)
+  - [Jaro-Winkler similarity](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
 - 🎯 Customizable domain validation
 - ⚙️ Configurable similarity threshold
-- 🧩 Dependency injection support
 
 ## Installation
 
@@ -23,6 +23,18 @@ dependencies:
 ```
 
 ## Usage
+
+### Simple Example
+
+```dart
+import 'package:mailfix/mailfix.dart';
+
+void main() {
+  final mailfix = Mailfix();
+  final result = mailfix.validateEmail('user@gmal.com');
+  print(result.suggestion); // Suggests: user@gmail.com
+}
+```
 
 ### Basic Usage
 
@@ -35,9 +47,9 @@ void main() {
   final result = mailfix.validateEmail('user@gmal.com');
   if (!result.isValid) {
     if (result.suggestion != null) {
-      print('Suggestion: ${result.suggestion}'); // Will suggest gmail.com
+      print('Suggestion: \\${result.suggestion}'); // Will suggest gmail.com
     } else {
-      print('Error: ${result.error}');
+      print('Error: \\${result.error}');
     }
   }
 }
@@ -49,10 +61,6 @@ void main() {
 final mailfix = Mailfix(
   // Choose similarity algorithm
   algorithm: MailfixSimilarityAlgorithm.damerauLevenshtein,
-  
-  // Set language
-  locale: 'pt-br', // Supports 'en' (default), 'pt-br'
-  
   // Configure similarity threshold
   maxAllowedDistance: 3,
 );
@@ -72,20 +80,6 @@ class MyEmailValidator implements EmailValidatorInterface {
     return true;
   }
 }
-
-final mailfix = Mailfix(validator: MyEmailValidator());
-```
-
-### Custom Messages
-
-```dart
-final messages = MailfixMessages(
-  emptyEmail: 'Email cannot be empty',
-  invalidEmail: 'Please enter a valid email',
-  suggestionTemplate: 'Did you mean to type: {email}?',
-);
-
-final mailfix = Mailfix(messages: messages);
 ```
 
 ## Example
@@ -94,14 +88,16 @@ Check out the [example](example) directory for a complete Flutter application de
 
 ## Algorithms
 
-### Levenshtein Distance (Default)
-Best for general purpose use. Calculates the minimum number of single-character edits required to change one string into another.
+### Jaro-Winkler Similarity (Default)
+Optimized for short strings and gives more favorable ratings to strings that match from the beginning. Good for catching subtle differences in domain names. [Read more](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
+
+### Levenshtein Distance 
+Best for general purpose use. Calculates the minimum number of single-character edits required to change one string into another. [Read more](https://en.wikipedia.org/wiki/Levenshtein_distance)
 
 ### Damerau-Levenshtein Distance
-Better for catching transposition errors (when two adjacent characters are swapped). Particularly useful for email domains where typos often involve character swaps.
+Better for catching transposition errors (when two adjacent characters are swapped). Particularly useful for email domains where typos often involve character swaps. [Read more](https://en.wikipedia.org/wiki/Damerau-Levenshtein_distance)
 
-### Jaro-Winkler Similarity
-Optimized for short strings and gives more favorable ratings to strings that match from the beginning. Good for catching subtle differences in domain names.
+
 
 ## Contributing
 

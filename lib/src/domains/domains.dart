@@ -1,6 +1,6 @@
 /// Manages a collection of valid email domains
 class EmailDomains {
-  /// Cria uma nova instância de EmailDomains com domínios iniciais opcionais
+  /// Creates a new EmailDomains instance with optional initial domains
   EmailDomains([List<String>? initialDomains])
     : _domains = <String>{
         'gmail.com',
@@ -15,27 +15,27 @@ class EmailDomains {
       };
   final Set<String> _domains;
 
-  /// Adiciona um novo domínio válido (em minúsculo)
+  /// Adds a new valid domain (lowercase)
   void addDomain(String domain) {
     if (_isValidDomain(domain)) {
       _domains.add(domain.toLowerCase());
     }
   }
 
-  /// Adiciona múltiplos domínios válidos
+  /// Adds multiple valid domains
   void addDomains(List<String> domains) {
     for (final domain in domains) {
       addDomain(domain);
     }
   }
 
-  /// Verifica se o domínio existe na coleção
+  /// Checks if the domain exists in the collection
   bool containsDomain(String domain) => _domains.contains(domain.toLowerCase());
 
-  /// Lista imutável de todos os domínios
+  /// Immutable list of all domains
   List<String> get domains => List.unmodifiable(_domains);
 
-  /// Valida se o domínio está no formato correto
+  /// Checks if the domain format is valid
   bool _isValidDomain(String domain) {
     if (domain.isEmpty || domain.length > 255) return false;
     final parts = domain.split('.');
