@@ -1,0 +1,37 @@
+name: mailfix
+description: A Dart package for email validation and correction suggestions using various string similarity algorithms. Features include internationalization support, customizable domain validation, and multiple similarity algorithm options.
+version: 0.0.1
+repository: https://github.com/ValdirGiorgi/mailfix
+homepage: https://github.com/ValdirGiorgi/mailfix
+issue_tracker: https://github.com/ValdirGiorgi/mailfix/issues
+
+environment:
+  sdk: ^3.7.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  email_validator: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+topics:
+  - email
+  - validation
+  - similarity
+  - string-matching
+  - internationalization
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+
+flutter:
