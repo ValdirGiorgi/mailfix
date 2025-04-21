@@ -19,7 +19,7 @@ A powerful Dart/Flutter package for email validation and correction suggestions 
 
 ```yaml
 dependencies:
-  mailfix: ^0.0.1
+  mailfix: ^0.0.2
 ```
 
 ## Usage
