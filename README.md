@@ -22,6 +22,8 @@ dependencies:
   mailfix: ^0.0.2
 ```
 
+![Mailfix Demo](https://valdir.dev.br/mailfix/print.png)
+
 ## Usage
 
 ### Simple Example
