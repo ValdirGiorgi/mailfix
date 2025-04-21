@@ -82,9 +82,9 @@ class MyEmailValidator implements EmailValidatorInterface {
 }
 ```
 
-## Example
+## Example 
 
-Check out the [example](example) directory for a complete Flutter application demonstrating all features.
+Check out the [example](https://valdir.dev.br/mailfix/) directory for a complete Flutter application demonstrating all features.
 
 ## Algorithms
 
