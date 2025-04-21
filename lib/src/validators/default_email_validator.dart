@@ -1,5 +1,6 @@
-import '../interfaces/email_validator.dart';
 import 'package:email_validator/email_validator.dart' as validator;
+
+import '../interfaces/email_validator.dart';
 
 /// Default email validator implementation using email_validator package
 class DefaultEmailValidator implements EmailValidator {

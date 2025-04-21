@@ -11,10 +11,6 @@ class ParamValidationPage extends StatefulWidget {
 
 class _ParamValidationPageState extends State<ParamValidationPage> {
   final _controller = TextEditingController();
-  final _domainController =
-      TextEditingController(); // Novo controller para domínio
-  final _domainsListController =
-      TextEditingController(); // Novo controller para lista
   int _maxAllowedDistance = 3;
   MailfixSimilarityAlgorithm _selectedAlgorithm =
       MailfixSimilarityAlgorithm.jaroWinkler;
@@ -22,7 +18,7 @@ class _ParamValidationPageState extends State<ParamValidationPage> {
   Mailfix _mailfix = Mailfix();
   bool? _isValid;
   String? _suggestion;
-  String? _domainAddMessage;
+
   final List<String> _extraDomains = [];
   List<Map<String, dynamic>> _domainDistances = [];
   bool _showDomainDistances =
@@ -74,64 +70,6 @@ class _ParamValidationPageState extends State<ParamValidationPage> {
       _suggestion = result.suggestion;
     });
     _updateDomainDistances();
-  }
-
-  /// Adiciona um novo domínio ao Mailfix
-  void _addDomain() {
-    final domain = _domainController.text.trim();
-    if (domain.isNotEmpty) {
-      setState(() {
-        _mailfix.addDomain(domain);
-        _extraDomains.add(domain);
-        _domainAddMessage = 'Domínio "$domain" adicionado!';
-        _domainController.clear();
-      });
-    } else {
-      setState(() {
-        _domainAddMessage = 'Informe um domínio válido.';
-      });
-    }
-  }
-
-  /// Adiciona uma lista de domínios ao Mailfix
-  void _addDomainsList() {
-    final text = _domainsListController.text.trim();
-    if (text.isNotEmpty) {
-      final domains =
-          text
-              .split(',')
-              .map((d) => d.trim())
-              .where((d) => d.isNotEmpty)
-              .toList();
-      if (domains.isNotEmpty) {
-        setState(() {
-          _mailfix.addDomains(domains);
-          _extraDomains.addAll(domains);
-          _domainAddMessage = 'Domínios adicionados: \n${domains.join(", ")}';
-          _domainsListController.clear();
-        });
-      } else {
-        setState(() {
-          _domainAddMessage = 'Nenhum domínio válido informado.';
-        });
-      }
-    } else {
-      setState(() {
-        _domainAddMessage = 'Informe ao menos um domínio.';
-      });
-    }
-  }
-
-  void _resetDomains() {
-    setState(() {
-      _mailfix = Mailfix(
-        maxAllowedDistance: _maxAllowedDistance,
-        algorithm: _selectedAlgorithm,
-        allowSpecialChars: _allowSpecialChars,
-      );
-      _extraDomains.clear();
-      _domainAddMessage = 'Domínios extras removidos.';
-    });
   }
 
   /// Exibe um modal melhorado para configuração dos domínios extras

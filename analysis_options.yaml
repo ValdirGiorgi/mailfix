@@ -31,7 +31,6 @@ linter:
     - library_private_types_in_public_api
     - no_leading_underscores_for_local_identifiers
     - null_check_on_nullable_type_parameter
-    - package_api_docs
     - package_names
     - package_prefixed_library_names
     - prefer_const_constructors

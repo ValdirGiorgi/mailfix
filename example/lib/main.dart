@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mailfix/mailfix.dart';
 import 'home_page.dart';
-import 'param_validation_page.dart';
-import 'simple_validation_page.dart';
 
 void main() {
   runApp(const MyApp());

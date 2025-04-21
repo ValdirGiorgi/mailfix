@@ -1,15 +1,5 @@
 library;
 
-export 'src/models/email_validation_result.dart';
-export 'src/interfaces/email_validator.dart';
-export 'src/interfaces/similarity_algorithm.dart';
-export 'src/algorithms/levenshtein.dart';
-export 'src/algorithms/damerau_levenshtein.dart';
-export 'src/algorithms/jaro_winkler.dart';
-export 'src/domains/domains.dart';
-export 'src/validators/default_email_validator.dart';
-
-import 'src/algorithms/levenshtein.dart';
 import 'src/algorithms/damerau_levenshtein.dart';
 import 'src/algorithms/jaro_winkler.dart';
 import 'src/domains/domains.dart';
@@ -17,6 +7,15 @@ import 'src/interfaces/email_validator.dart';
 import 'src/interfaces/similarity_algorithm.dart';
 import 'src/models/email_validation_result.dart';
 import 'src/validators/default_email_validator.dart';
+
+export 'src/algorithms/damerau_levenshtein.dart';
+export 'src/algorithms/jaro_winkler.dart';
+export 'src/algorithms/levenshtein.dart';
+export 'src/domains/domains.dart';
+export 'src/interfaces/email_validator.dart';
+export 'src/interfaces/similarity_algorithm.dart';
+export 'src/models/email_validation_result.dart';
+export 'src/validators/default_email_validator.dart';
 
 /// Available similarity algorithms for email validation
 enum MailfixSimilarityAlgorithm { levenshtein, damerauLevenshtein, jaroWinkler }
