@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.3
+
+### Changed
+- Updated documentation.
+
+## 0.0.2
+
+### Changed
+- Updated documentation.
+
 ## 0.0.1 - Initial Release
 
 ### Added
