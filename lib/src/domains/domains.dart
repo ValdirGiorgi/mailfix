@@ -32,8 +32,11 @@ class EmailDomains {
   /// Checks if the domain exists in the collection
   bool containsDomain(String domain) => _domains.contains(domain.toLowerCase());
 
-  /// Immutable list of all domains
-  List<String> get domains => List.unmodifiable(_domains);
+  /// Immutable list of all domains, sorted descending alphabetically
+  List<String> get domains {
+    final sortedDomains = _domains.toList()..sort((a, b) => b.compareTo(a));
+    return List.unmodifiable(sortedDomains);
+  }
 
   /// Checks if the domain format is valid
   bool _isValidDomain(String domain) {

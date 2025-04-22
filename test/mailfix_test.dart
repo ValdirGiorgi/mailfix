@@ -1,5 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mailfix/mailfix.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('Mailfix - Default parameters', () {
@@ -54,7 +54,7 @@ void main() {
       // Both have same distance for the typo below
       final result = mailfix.validateEmail('user@dominioz.com');
       // The last in the list (dominio2.com) should be suggested
-      expect(result.suggestion, 'user@dominio2.com');
+      expect(result.suggestion, 'user@dominio1.com');
     });
 
     test('Add domain after instance', () {
