@@ -96,7 +96,7 @@ class Mailfix {
 
     for (final validDomain in _domains.domains) {
       final distance = _similarityAlgorithm.calculate(domain, validDomain);
-      if (distance < minDistance) {
+      if (distance <= minDistance) {
         minDistance = distance;
         bestMatch = validDomain;
       }
