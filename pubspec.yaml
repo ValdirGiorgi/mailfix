@@ -1,9 +1,13 @@
 name: mailfix
 description: Package for email validation with domain correction suggestions using configurable similarity algorithms.
-version: 0.0.6
+version: 0.37.1
 repository: https://github.com/ValdirGiorgi/mailfix
 homepage: https://github.com/ValdirGiorgi/mailfix
 issue_tracker: https://github.com/ValdirGiorgi/mailfix/issues
+
+screenshots:
+  - description: The dart package mailfix provides a function to validate email addresses and suggest corrections for common domain typos.
+    path: assets/logos/mailfix.png
 
 environment:
   sdk: ^3.7.0

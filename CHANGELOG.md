@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.6
+## 0.37.1
 
 ### Changed
 - Updated the list of restricted special characters in the default email validator
