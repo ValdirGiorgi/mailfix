@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/logos/mailfix.png" width="100" height="100" alt="Mailfix Logo">
+  <img src="https://raw.githubusercontent.com/ValdirGiorgi/mailfix/refs/heads/main/assets/logos/mailfix.png" width="100" height="100" alt="Mailfix Logo">
 </p>
 
 # Mailfix
