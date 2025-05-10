@@ -1,6 +1,6 @@
 name: mailfix
 description: Package for email validation with domain correction suggestions using configurable similarity algorithms.
-version: 0.0.4
+version: 0.0.5
 repository: https://github.com/ValdirGiorgi/mailfix
 homepage: https://github.com/ValdirGiorgi/mailfix
 issue_tracker: https://github.com/ValdirGiorgi/mailfix/issues
