@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/logos/mailfix.png" width="100" height="100" alt="Mailfix Logo">
+</p>
+
 # Mailfix
 
 A powerful Dart/Flutter package for email validation and correction suggestions using advanced string similarity algorithms.
@@ -19,7 +23,7 @@ A powerful Dart/Flutter package for email validation and correction suggestions 
 
 ```yaml
 dependencies:
-  mailfix: ^0.0.4
+  mailfix: ^0.0.5
 ```
 
 ![Mailfix Demo](https://valdir.dev.br/mailfix/print.png)
@@ -84,9 +88,15 @@ class MyEmailValidator implements EmailValidatorInterface {
 }
 ```
 
-## Example 
+## Live Example
 
-Check out the [example](https://valdir.dev.br/mailfix/) directory for a complete Flutter application demonstrating all features.
+Test the Mailfix library right now:
+
+1. Visit our [interactive demo](https://valdir.dev.br/mailfix/) 
+2. Type an email with typos (e.g., "user@gmial.com")
+3. See the correction suggestions in real time
+
+The [complete example code](https://github.com/ValdirGiorgi/mailfix/tree/main/example/lib) is available in the repository for you to implement in your project.
 
 ## Algorithms
 

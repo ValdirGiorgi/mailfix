@@ -23,7 +23,7 @@ class DefaultEmailValidator implements EmailValidator {
       if (parts.length != 2) return false;
 
       final local = parts[0];
-      const specialChars = r'!#$%&*+-/=?^_`{|}~';
+      const specialChars = r'!#$%&*/=?^`{|}~';
       for (var char in specialChars.runes.toList().map(
         (r) => String.fromCharCode(r),
       )) {

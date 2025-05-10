@@ -1,19 +1,15 @@
 # Changelog
 
+## 0.0.5
+
+### Changed
+- Updated the list of restricted special characters in the default email validator
+- Removed hyphen (`-`), underscore (`_`), and plus (`+`) from the restricted characters list
+- Improved compatibility with common corporate email addresses and email aliasing practices that frequently use these characters
+
 ## 0.0.4
 ### Changed
 - Change for package DART
-
-## 0.0.3
-
-### Changed
-- Updated documentation.
-
-## 0.0.2
-
-### Changed
-- Updated documentation.
-
 ## 0.0.1 - Initial Release
 
 ### Added
